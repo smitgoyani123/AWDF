@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  background-color: #eef2f7;
+  color: #333;
+}
+
+#root {
+  min-height: 100vh;
+}
+footer{
+  text-align: center;
+}
+.App{
+  width: "80%";
+  margin: "auto";
+  font: "Arial" 
+}
