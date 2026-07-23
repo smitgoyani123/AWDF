@@ -1,27 +1,37 @@
-import "./App.css";
-import Header from "./components/Header.jsx";
-import About from "./components/About.jsx";
-import Skills from "./components/Skills.jsx";
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 
+import Home from "./pages/Home.jsx";
+import Projects from "./pages/Projects.jsx";
+import Contact from "./pages/Contact.jsx";
+import NotFound from "./pages/NotFound.jsx";
+import "./App.css";
+
 function App() {
-  const skills = ["HTML","CSS","JavaScript","React","Python","Git & GitHub",];
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
+    document.documentElement.classList.toggle("light", !isDarkMode);
+  }, [isDarkMode]);
 
   return (
-    <div className="App">
+    <div className={`app-shell ${isDarkMode ? "dark" : "light"}`}>
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
-      <Header
-        name="Smit Kumar"
-        color="darkblue"
-      />
+      <main className="page-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
 
-      <About />
-
-      <Skills skillList={skills} />
-
-   
-
-      <Footer email="sskumar@gmail.com" />
+      <Footer email="goyanismit@gmail.com" />
     </div>
   );
 }

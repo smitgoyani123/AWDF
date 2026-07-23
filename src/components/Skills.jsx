@@ -1,15 +1,15 @@
 function Skills({ skillList }) {
   return (
-    <section>
+    <section className="card">
       <h2>Skills</h2>
 
-      <ul>
+      <div className="tag-row">
         {skillList.map((skill) => (
-          <li key={skill}>{skill}</li>
+          <span className="tag" key={skill}>
+            {skill}
+          </span>
         ))}
-      </ul>
-
-      <hr />
+      </div>
     </section>
   );
 }
